@@ -25,7 +25,7 @@ void setup(void) {
 	GPIO_init(BUTTON_PIN, INPUT);  
 	// initialize the LED pin as an output:
 	GPIO_init(LED_PIN5, OUTPUT); 
-  GPIO_init(LED_PIN6, OUTPUT);	
+  	GPIO_init(LED_PIN6, OUTPUT);	
 	GPIO_init(LED_PIN7, OUTPUT);
 	GPIO_init(LED_PINB6, OUTPUT);
 	
