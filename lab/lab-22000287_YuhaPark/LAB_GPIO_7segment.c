@@ -23,8 +23,7 @@ int main(void) {
 	while(1){
 		
 		int button_state = GPIO_read(BUTTON_PIN);
-			//sevensegment_display(count % 10);
-			sevensegment_decoder(count % 10);
+		sevensegment_display(count % 10);
 		
 		if(button_state == 0 && last_button_state == 1) {
             delay_ms(50);  
@@ -46,6 +45,5 @@ int main(void) {
 void setup(void)
 {
 	RCC_HSI_init();	
-	//sevensegment_display_init(PA_7, PB_6, PC_7, PA_9);  // Decoder input A,B,C,D
-	sevensegment_decoder_init();
+	sevensegment_display_init(PA_7, PB_6, PC_7, PA_9);  // Decoder input A,B,C,D
 }
