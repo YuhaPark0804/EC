@@ -261,7 +261,7 @@ void GPIO_ospeed(PinName_t pinName, int speed);
 **Example code**
 
 ```c++
-	GPIO_ospeed(pinNameB, MEDIUM_SPEED);
+GPIO_ospeed(pinNameB, MEDIUM_SPEED);
 ```
 
 
@@ -287,7 +287,7 @@ void GPIO_otype(PinName_t pinName, int type);
 **Example code**
 
 ```c++
-	GPIO_otype(pinNameA, PUSH_PULL);
+GPIO_otype(pinNameA, PUSH_PULL);
 ```
 
 
@@ -313,7 +313,7 @@ void GPIO_pupd(PinName_t pinName, int pupd);
 **Example code**
 
 ```c++
-	GPIO_pupd(pinNameA, NO_PUPD);
+GPIO_pupd(pinNameA, NO_PUPD);
 ```
 
 
@@ -337,7 +337,7 @@ void sevensegment_display_init(PinName_t pinNameA, PinName_t pinNameB, PinName_t
 **Example code**
 
 ```c++
-	sevensegment_display_init(PA_7, PB_6, PC_7, PA_9);  // Decoder input A,B,C,D
+sevensegment_display_init(PA_7, PB_6, PC_7, PA_9);  // Decoder input A,B,C,D
 ```
 
 
@@ -360,7 +360,7 @@ void sevensegment_display(uint8_t  num);
 **Example code**
 
 ```c++
-	sevensegment_display(count % 10); //count = 0 ~ 9
+sevensegment_display(count % 10); //count = 0 ~ 9
 ```
 
 
@@ -381,7 +381,7 @@ void sevensegment_decoder_init(void);
 **Example code**
 
 ```c++
-	sevensegment_decoder_init(); // Use one button pin and eight led pins in 7-segment.
+sevensegment_decoder_init(); // Use one button pin and eight led pins in 7-segment.
 ```
 
 
@@ -403,7 +403,7 @@ void sevensegment_decoder(uint8_t  num);
 **Example code**
 
 ```c++
-	sevensegment_decoder(count % 10); //count = 0 ~ 9
+sevensegment_decoder(count % 10); //count = 0 ~ 9
 ```
 
 
@@ -427,7 +427,7 @@ void delay_ms(int ms);
 **Example code**
 
 ```c++
-	 delay_ms(200);  // delays 0.2 [s]
+delay_ms(200);  // delays 0.2 [s]
 ```
 
 
