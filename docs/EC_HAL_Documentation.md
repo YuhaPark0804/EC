@@ -210,7 +210,7 @@ void GPIO_write(PinName_t pinName, int Output);
 **Example code**
 
 ```c++
-	GPIO_write(LED_PIN5, HIGH); 
+GPIO_write(LED_PIN5, HIGH); 
 ```
 
 
