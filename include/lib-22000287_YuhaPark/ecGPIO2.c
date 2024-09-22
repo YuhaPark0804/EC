@@ -112,43 +112,22 @@ void GPIO_write(PinName_t pinName, int Output){
 	
 }
 
-void sevensegment_display_init(PinName_t pinNameA, PinName_t pinNameB, PinName_t pinNameC, PinName_t pinNameD){
-	  GPIO_TypeDef *PortA, *PortB, *PortC, *PortD;
-    unsigned int pinA, pinB, pinC, pinD;
+void sevensegment_display_init(PinName_t pinNameA, PinName_t pinNameB, PinName_t pinNameC, PinName_t pinNameD) {
+    GPIO_TypeDef *Port;
+    unsigned int pin;
+    PinName_t pins[] = {pinNameA, pinNameB, pinNameC, pinNameD};
 
-    ecPinmap(pinNameA, &PortA, &pinA);
-    ecPinmap(pinNameB, &PortB, &pinB);
-    ecPinmap(pinNameC, &PortC, &pinC);
-    ecPinmap(pinNameD, &PortD, &pinD);
-	
-	
-	GPIO_init(BUTTON_PIN, INPUT);  // calls RCC_GPIOC_enable()
-	GPIO_init(pinNameA, OUTPUT); 
-  GPIO_init(pinNameB, OUTPUT);	
-	GPIO_init(pinNameC, OUTPUT);
-	GPIO_init(pinNameD, OUTPUT);
-	
-	//PC_13
-	GPIO_pupd(BUTTON_PIN, PULL_UP);
-	//PA_7
-	GPIO_ospeed(pinNameA, MEDIUM_SPEED);
-	GPIO_otype(pinNameA, PUSH_PULL);
-	GPIO_pupd(pinNameA, NO_PUPD);
-	//PB_6
-	GPIO_ospeed(pinNameB, MEDIUM_SPEED);
-	GPIO_otype(pinNameB, PUSH_PULL);
-	GPIO_pupd(pinNameB, NO_PUPD);
-	//PC_7
-	GPIO_ospeed(pinNameC, MEDIUM_SPEED);
-	GPIO_otype(pinNameC, PUSH_PULL);
-	GPIO_pupd(pinNameC, NO_PUPD);
-	//PA_9
-	GPIO_ospeed(pinNameD, MEDIUM_SPEED);
-	GPIO_otype(pinNameD, PUSH_PULL);
-	GPIO_pupd(pinNameD, NO_PUPD);
-	
-	
-	
+    ecPinmap(BUTTON_PIN, &Port, &pin);
+    GPIO_init(BUTTON_PIN, INPUT);  
+    GPIO_pupd(BUTTON_PIN, PULL_UP);
+
+    for (int i = 0; i < 4; i++) {
+        ecPinmap(pins[i], &Port, &pin);
+        GPIO_init(pins[i], OUTPUT);
+        GPIO_ospeed(pins[i], MEDIUM_SPEED);
+        GPIO_otype(pins[i], PUSH_PULL);
+        GPIO_pupd(pins[i], NO_PUPD);
+    }
 }
 
 
@@ -178,53 +157,26 @@ void sevensegment_display(uint8_t  num){
 	
 }
 
-void sevensegment_decoder_init(void){
-	
-	GPIO_init(BUTTON_PIN, INPUT);  
-	GPIO_init(LED_PINA_5, OUTPUT); 
-  GPIO_init(LED_PINA_6, OUTPUT); 
-	GPIO_init(LED_PINA_7, OUTPUT); 
-	GPIO_init(LED_PINB_6, OUTPUT); 
-	GPIO_init(LED_PINC_7, OUTPUT); 
-	GPIO_init(LED_PINA_9, OUTPUT); 
-	GPIO_init(LED_PINA_8, OUTPUT); 
-	GPIO_init(LED_PINB_10, OUTPUT); 
-	
-	//PC_13
-	GPIO_pupd(BUTTON_PIN, PULL_UP);
-	//PA_5
-	GPIO_ospeed(LED_PINA_5, MEDIUM_SPEED);
-	GPIO_otype(LED_PINA_5, PUSH_PULL);
-	GPIO_pupd(LED_PINA_5, NO_PUPD);
-	//PA_6
-	GPIO_ospeed(LED_PINA_6, MEDIUM_SPEED);
-	GPIO_otype(LED_PINA_6, PUSH_PULL);
-	GPIO_pupd(LED_PINA_6, NO_PUPD);
-	//PA_7
-	GPIO_ospeed(LED_PINA_7, MEDIUM_SPEED);
-	GPIO_otype(LED_PINA_7, PUSH_PULL);
-	GPIO_pupd(LED_PINA_7, NO_PUPD);
-	//PB_6
-	GPIO_ospeed(LED_PINB_6, MEDIUM_SPEED);
-	GPIO_otype(LED_PINB_6, PUSH_PULL);
-	GPIO_pupd(LED_PINB_6, NO_PUPD);
-	//PC_7
-	GPIO_ospeed(LED_PINC_7, MEDIUM_SPEED);
-	GPIO_otype(LED_PINC_7, PUSH_PULL);
-	GPIO_pupd(LED_PINC_7, NO_PUPD);
-	//PA_9
-	GPIO_ospeed(LED_PINA_9, MEDIUM_SPEED);
-	GPIO_otype(LED_PINA_9, PUSH_PULL);
-	GPIO_pupd(LED_PINA_9, NO_PUPD);
-	//PA_8
-	GPIO_ospeed(LED_PINA_8, MEDIUM_SPEED);
-	GPIO_otype(LED_PINA_8, PUSH_PULL);
-	GPIO_pupd(LED_PINA_8, NO_PUPD);
-	//PA_10
-	GPIO_ospeed(LED_PINB_10, MEDIUM_SPEED);
-	GPIO_otype(LED_PINB_10, PUSH_PULL);
-	GPIO_pupd(LED_PINB_10, NO_PUPD);
+void sevensegment_decoder_init(void) {
+    GPIO_TypeDef *Port;
+    unsigned int pin;
+    PinName_t pins[] = {
+        LED_PINA_5, LED_PINA_6, LED_PINA_7, LED_PINB_6,
+        LED_PINC_7, LED_PINA_9, LED_PINA_8, LED_PINB_10
+    };
+
+    GPIO_init(BUTTON_PIN, INPUT);  
+    GPIO_pupd(BUTTON_PIN, PULL_UP);
+
+    for (int i = 0; i < 8; i++) {
+        ecPinmap(pins[i], &Port, &pin);
+        GPIO_init(pins[i], OUTPUT);
+        GPIO_ospeed(pins[i], MEDIUM_SPEED);
+        GPIO_otype(pins[i], PUSH_PULL);
+        GPIO_pupd(pins[i], NO_PUPD);
+    }
 }
+
 void sevensegment_decoder(uint8_t  num){
 	
 	uint8_t segment_map[10] = {
