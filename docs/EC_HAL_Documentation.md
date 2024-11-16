@@ -118,11 +118,14 @@ void sevensegment_display_init(PinName_t pinNameA, PinName_t pinNameB, PinName_t
 void sevensegment_display(uint8_t  num);
 void setup(void);
 void delay_ms(int ms);
+void sevensegment_off(void);
 
 //7-segment decoder: problem 2
 void sevensegment_decoder_init(void); 
 void sevensegment_decoder(uint8_t  num);
 
+//TU_Systick: LED toggle
+void LED_toggle(void);
 
 #ifdef __cplusplus
 }
@@ -431,6 +434,24 @@ delay_ms(200);  // delays 0.2 [s]
 ```
 
 
+### sevensegment_off\(\)
+
+Turn off sevensegment.
+
+```c++
+void sevensegment_off(void);
+```
+
+**Parameters**
+
+* **No parameters**
+  
+
+**Example code**
+
+```c++
+sevensegment_off();
+```
 
 
 
