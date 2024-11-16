@@ -39,6 +39,8 @@ MCU:  STM32F411RE (Nucleo-64)
     + [sevensegment_decoder_init\(\)](#sevensegment_decoder_init)
     + [sevensegment_decoder\(\)](#sevensegment_decoder)
     + [delay_ms\(\)](#delay_ms)
+    + [sevensegment_off\(\)](#sevensegment_off)
+    + [LED_toggle\(\)](#LED_toggle)
 
 ---
 
@@ -136,7 +138,7 @@ void LED_toggle(void);
 
 
 
-
+---
 ### GPIO_init\(\)
 
 Initializes GPIO pins with default setting and Enables GPIO Clock. Mode: In/Out/AF/Analog
@@ -164,7 +166,7 @@ GPIO_init(BUTTON_PIN, INPUT);
 ```
 
 
-
+---
 ### GPIO_mode\(\)
 
 Configures  GPIO pin modes: In/Out/AF/Analog
@@ -191,7 +193,7 @@ GPIO_mode(pinNameA, OUTPUT);
 ```
 
 
-
+---
 ### GPIO_write\(\)
 
 Write the data to GPIO pin: High, Low
@@ -217,7 +219,7 @@ GPIO_write(LED_PIN5, HIGH);
 ```
 
 
-
+---
 ### GPIO_read\(\)
 
 Read the data from GPIO pin
@@ -242,7 +244,7 @@ GPIO_read(BUTTON_PIN);
 ```
 
 
-
+---
 ### GPIO_ospeed\(\)
 
 Configures  output speed of GPIO pin : Low, Mid, Fast, High
@@ -268,7 +270,7 @@ GPIO_ospeed(pinNameB, MEDIUM_SPEED);
 ```
 
 
-
+---
 ### GPIO_otype\(\)
 
 Configures  output type of GPIO pin: Push-Pull / Open-Drain
@@ -294,7 +296,7 @@ GPIO_otype(pinNameA, PUSH_PULL);
 ```
 
 
-
+---
 ### GPIO_pupd\(\)
 
 Configures  Pull-up/Pull-down mode of GPIO pin: No Pull-up, Pull-down/ Pull-up/ Pull-down/ Reserved
@@ -319,7 +321,7 @@ void GPIO_pupd(PinName_t pinName, int pupd);
 GPIO_pupd(pinNameA, NO_PUPD);
 ```
 
-
+---
 ### sevensegment_display_init\(\)
 
 Indicates the initialization status of the 7-segment display.
@@ -344,7 +346,7 @@ sevensegment_display_init(PA_7, PB_6, PC_7, PA_9);  // Decoder input A,B,C,D
 ```
 
 
-
+---
 ### sevensegment_display\(\)
 
 Depending on the input number, the four pins will be in the high or low state.
@@ -367,7 +369,7 @@ sevensegment_display(count % 10); //count = 0 ~ 9
 ```
 
 
-
+---
 ### sevensegment_decoder_init\(\)
 
 Indicates the initialization status of the 7-segment display without a decoder.
@@ -387,7 +389,7 @@ void sevensegment_decoder_init(void);
 sevensegment_decoder_init(); // Use one button pin and eight led pins in 7-segment.
 ```
 
-
+---
 ### sevensegment_decoder\(\)
 
 When the button is pressed, the eight pins of the 7-segment (without a decoder) will be high or low depending on the count.
@@ -411,7 +413,7 @@ sevensegment_decoder(count % 10); //count = 0 ~ 9
 
 
 
-
+---
 ### delay_ms\(\)
 
 Delays for debounceing processing.
@@ -433,7 +435,7 @@ void delay_ms(int ms);
 delay_ms(200);  // delays 0.2 [s]
 ```
 
-
+---
 ### sevensegment_off\(\)
 
 Turn off sevensegment.
@@ -452,6 +454,27 @@ void sevensegment_off(void);
 ```c++
 sevensegment_off();
 ```
+
+---
+### LED_toggle\(\)
+
+Toggle LED PA_5.
+
+```c++
+void LED_toggle(void);
+```
+
+**Parameters**
+
+* **No parameters**
+  
+
+**Example code**
+
+```c++
+LED_toggle();
+```
+
 
 
 
